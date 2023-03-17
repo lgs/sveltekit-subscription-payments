@@ -20,15 +20,21 @@
 		if (authType === 'password') {
 			const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
 			isError = !!error;
-			message = isError ? 'Something went wrong' : 'Successfully signed in';
+			console.log('signin page - signInWithPassword isError, email, password: ', isError, email, password);
+			
+			message = isError ? 'Something went wrong in supabaseClient.auth.signInWithPassword({ email, password })' : 'Successfully signed in';
 		} else if (authType === 'signup') {
 			const { error } = await supabaseClient.auth.signUp({ email, password });
 			isError = !!error;
-			message = isError ? 'Something went wrong' : 'Successfully signed up';
+			console.log('signin page - signUp isError, email, password: ', isError, email, password);
+
+			message = isError ? 'Something went wrong in supabaseClient.auth.signUp({ email, password })' : 'Successfully signed up';
 		} else if (authType === 'magiclink') {
 			const { error } = await supabaseClient.auth.signInWithOtp({ email });
 			isError = !!error;
-			message = isError ? 'Something went wrong' : 'Take a look at your inbox';
+			console.log('signin page - signInWithOtp isError, email, password: ', isError, email, password);
+
+			message = isError ? 'Something went wrong in supabaseClient.auth.signInWithOtp({ email })' : 'Take a look at your inbox';
 		}
 	}
 </script>
